@@ -15,13 +15,13 @@ jobs:
               run: pwd
             - name: List Contents of the directory  
               run: ls -la
-            - name: chage directory
-              run: cd /home/runner/work/JSGA_Repo/JSGA_Repo/out/.next
-            - name: fetch contents of .next folder  
+            - name: change directory
+              run: cd /home/runner/work/JSGA_Repo/JSGA_Repo/out
+            - name: fetch contents of "out" folder  
               run: ls -la  
             - name: Upload Static Site Content
               uses: actions/upload-artifact@v4
               with:
                 name: static-site
-                path: /home/runner/work/JSGA_Repo/JSGA_Repo/out/.next  
+                path: /home/runner/work/JSGA_Repo/JSGA_Repo/out
             
