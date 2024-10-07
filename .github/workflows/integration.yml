@@ -15,6 +15,8 @@ jobs:
               run: pwd
             - name: List Contents of the directory  
               run: ls -la
+            - name: cd .next/
+              run: ls -la  
             - name: Upload Static Site Content
               uses: actions/upload-artifact@v4
               with:
