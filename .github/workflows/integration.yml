@@ -34,5 +34,11 @@ jobs:
               with:
                 name: static-site
             - name: view contents of static-site
-              run: ls -la  
+              run: ls -R
+            - name: Archive(zip) the contents of the built artifact
+              uses: thedoctor0/zip-release@0.7.5
+              with:
+                type: 'zip'
+                filename: 'static.zip'
+
             
