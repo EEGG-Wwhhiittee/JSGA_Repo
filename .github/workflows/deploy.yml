@@ -1,5 +1,8 @@
 name: Build & Push Web App to Docker Hub 
-on: push
+on:
+  workflow_run:
+    workflows: [BuildApp, ReleaseApp]
+    types: [completed]
 jobs:
     build-push-container:
         name: build docker container
@@ -17,4 +20,4 @@ jobs:
               with:
                 context: .
                 push: true
-                tags: charith789/mysimplewebapp:latest
+                tags: charith789/octtenthwebapp:latest

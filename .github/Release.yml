@@ -1,29 +1,9 @@
-name: Build Next.js web Application
-on: push
-jobs:
-    build-project:
-        name: Build Project
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
-            - name: install NPM Dependencies
-              run: npm install
-            - name: Build Project Assets
-              run: npm run build
-            - name: Fetch Directory path
-              run: pwd
-            - name: List Contents of the directory  
-              run: ls -la
-            - name: change directory
-              run: cd /home/runner/work/JSGA_Repo/JSGA_Repo/out
-            - name: fetch contents of "out" folder  
-              run: ls -la  
-            - name: Upload Static Site Content
-              uses: actions/upload-artifact@v4
-              with:
-                name: static-site
-                path: /home/runner/work/JSGA_Repo/JSGA_Repo/out
+name: ReleaseApp
+on:
+  workflow_run:
+    workflows: [BuildApp]
+    types: [completed]
+job:
     Release-Project:
         name: Release project
         runs-on: ubuntu-latest
@@ -59,5 +39,3 @@ jobs:
                 asset_path: ./static.zip
                 asset_name: site-v${{ github.run_number }}.zip
                 asset_content_type: application/zip
-
-            
